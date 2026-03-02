@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Café en Grano Orgánico | Leon Coffee</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        .main-product-card:hover { transform: none; box-shadow: none; border: none; }
+        .main-product-card:hover .product-img { transform: none; filter: none; }
+        .main-product-card .btn { opacity: 1 !important; transform: none !important; z-index: 2 !important; }
+        .product-detail-layout { display: flex; flex-direction: row; gap: 4rem; align-items: center; text-align: left; }
+        @media (max-width: 768px) { .product-detail-layout { flex-direction: column; } }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <a href="home.html" class="nav-logo">
+            <img src="Logo_leon_coffee_0.png" alt="Leon Coffee Logo" style="height: 70px;">
+        </a>
+        <ul class="nav-links">
+            <li><a href="home.html#home">Inicio</a></li>
+            <li><a href="home.html#shop">Tienda</a></li>
+            <li><a href="historia.html">Historia</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+        <div class="nav-icons">
+            <a href="#" id="theme-toggle" aria-label="Cambiar tema"><i class="fas fa-moon"></i></a>
+            <a href="#" id="search-icon" aria-label="Buscar"><i class="fas fa-search"></i></a>
+            <a href="#" id="login-icon" aria-label="Iniciar sesión"><i class="far fa-user"></i></a>
+            <a href="#" id="cart-icon" aria-label="Carrito de compras">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="cart-count">0</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Product Detail Section -->
+    <section style="padding: 120px 5% 5rem; max-width: 1200px; margin: auto; min-height: 80vh;">
+        <div class="product-card main-product-card" data-id="1" style="background: transparent; border: none;">
+            <div class="product-detail-layout">
+                <div style="flex: 1;">
+                    <img src="bolsa_cafe_engrano.png" alt="Café en Grano Orgánico" class="product-img" style="width: 100%; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); height: auto; object-fit: contain;">
+                </div>
+                <div style="flex: 1;">
+                    <h1 class="product-title" style="font-size: 2.5rem; margin-bottom: 1rem;">Café en Grano Orgánico</h1>
+                    <p class="product-price" style="font-size: 1.5rem; color: var(--color-gold); margin-bottom: 1.5rem;">€19.90</p>
+                    <p style="margin-bottom: 2rem; line-height: 1.8;">100% Orgánico, sabor intenso y aroma profundo. Nuestro café en grano se tuesta en pequeños lotes artesanales para garantizar la máxima frescura y la preservación de todos sus matices y aceites naturales. Perfecto para los verdaderos amantes del café que buscan molerlo en casa justo antes de prepararlo.</p>
+                    <button class="btn btn-primary add-to-cart-btn" style="font-size: 1.2rem; padding: 1rem 0; width: 100%;">Añadir al carrito</button>
+                </div>
+            </div>
+        </div>
+        <div style="margin-top: 3rem; text-align: center;">
+            <a href="home.html#shop" class="btn btn-outline"><i class="fas fa-arrow-left"></i> Volver a la Tienda</a>
+        </div>
+    </section>
+
+    <!-- Suggested Products -->
+    <section class="products" style="padding-top: 2rem;">
+        <div class="section-header" style="margin-bottom: 3rem;">
+            <h2>También te podría interesar</h2>
+        </div>
+        <div class="product-grid">
+            <div class="product-card" data-id="2">
+                <a href="producto2.html" class="product-link">
+                    <img src="bolsa_cafe'_mollido.png" alt="Café Molido Orgánico" class="product-img"> 
+                </a>
+                <h3 class="product-title">Café Molido Orgánico</h3>
+                <p>Tostado y molido a la perfección. Listo para tu cafetera.</p>
+                <div class="product-price">€19.90</div>
+                <button class="btn btn-primary add-to-cart-btn">Añadir al carrito</button>
+            </div>
+            <div class="product-card" data-id="3">
+                <a href="producto3.html" class="product-link">
+                    <img src="tazas_leon.png" alt="Set Tazas Leon Coffee" class="product-img">
+                </a>
+                <h3 class="product-title">Set Tazas Leon Coffee</h3>
+                <p>Dos tazas de cerámica premium con nuestro logo grabado.</p>
+                <div class="product-price">€25.00</div>
+                <button class="btn btn-primary add-to-cart-btn">Añadir al carrito</button>
+            </div>
+            <div class="product-card" data-id="4">
+                <a href="producto4.html" class="product-link">
+                    <img src="moka_leon.png" alt="Moka Leon Coffee" class="product-img">
+                </a>
+                <h3 class="product-title">Moka Leon Coffee</h3>
+                <p>Clásica cafetera italiana Moka personalizada con nuestro logo.</p>
+                <div class="product-price">€35.00</div>
+                <button class="btn btn-primary add-to-cart-btn">Añadir al carrito</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact" style="margin-top: 5rem;">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <img src="Logo_leon_coffee_0.png" alt="Leon Coffee Logo" style="height: 70px; margin-bottom: 1.5rem; filter: brightness(0) invert(1);">
+                <p style="font-size: 0.9rem;">Tradición y Pasión por el café, desde 2026</p>
+            </div>
+            <div class="footer-col">
+                <h4>Enlaces Rápidos</h4>
+                <ul class="footer-links">
+                    <li><a href="home.html#home">Inicio</a></li>
+                    <li><a href="home.html#shop">Tienda Online</a></li>
+                    <li><a href="historia.html">Nuestra Historia</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Atención al Cliente</h4>
+                <ul class="footer-links">
+                    <li><a href="faq.html">Preguntas Frecuentes</a></li>
+                    <li><a href="#">Política de Envíos</a></li>
+                    <li><a href="#">Términos y Condiciones</a></li>
+                    <li><a href="#">Privacidad</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Síguenos</h4>
+                <p style="font-size: 0.9rem; margin-bottom: 1rem;">Únete a nuestra comunidad de amantes del café.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Leon Coffee. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Modals & Overlays -->
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>Tu Carrito</h3>
+            <button class="close-btn" id="close-cart"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <!-- Items will be injected here via JS -->
+            <div class="empty-cart-msg">Tu carrito está vacío</div>
+        </div>
+        <div class="cart-suggestions" id="cart-suggestions">
+            <!-- Suggestions injected via JS -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cart-total-price">€0.00</span>
+            </div>
+            <button class="btn btn-primary w-100" id="checkout-btn">Finalizar Compra</button>
+        </div>
+    </div>
+    <div class="overlay" id="cart-overlay"></div>
+
+    <!-- Login Modal -->
+    <div class="modal" id="login-modal">
+        <div class="modal-content">
+            <button class="close-btn modal-close" id="close-login"><i class="fas fa-times"></i></button>
+            <h2>Iniciar Sesión</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="login-email">Correo Electrónico</label>
+                    <input type="email" id="login-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Contraseña</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Entrar</button>
+                <p class="form-footer">¿No tienes cuenta? <a href="#">Regístrate</a></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Search Modal -->
+    <div class="modal search-modal" id="search-modal">
+        <div class="modal-content search-content">
+            <button class="close-btn modal-close" id="close-search"><i class="fas fa-times"></i></button>
+            <h2>Buscar</h2>
+            <form id="search-form" class="search-form-container">
+                <input type="text" id="search-input" placeholder="Buscar cafés, accesorios..." required>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+            </form>
+            <div class="search-results" id="search-results">
+                <!-- Search results will appear here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Sticky Add-to-Cart Bar -->
+    <div class="sticky-cart" id="sticky-cart">
+        <div class="sticky-cart-info">
+            <img src="bolsa_cafe_engrano.png" alt="Café en Grano Orgánico">
+            <div class="sticky-cart-details">
+                <h4>Café en Grano Orgánico</h4>
+                <p>€19.90</p>
+            </div>
+        </div>
+        <button class="btn btn-primary" onclick="document.querySelector('.main-product-card .add-to-cart-btn').click()">Añadir al carrito</button>
+    </div>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/51999999999" target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>

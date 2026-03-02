@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalizar Compra | Leon Coffee</title>
+    <link rel="icon" type="image/png" href="Logo_leon_coffee_0.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .checkout-container {
+            max-width: 1200px;
+            margin: 120px auto 4rem;
+            padding: 0 5%;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 4rem;
+        }
+
+        @media (max-width: 900px) {
+            .checkout-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        .checkout-header {
+            margin-bottom: 2rem;
+        }
+
+        .form-section {
+            background: var(--color-dark);
+            border: 1px solid var(--color-gold);
+            padding: 2.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-section h3 {
+            font-family: var(--font-heading);
+            color: var(--color-gold);
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--color-gold);
+            padding-bottom: 0.5rem;
+        }
+
+        .checkout-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .checkout-grid .full-width {
+            grid-column: 1 / -1;
+        }
+
+        .checkout-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .checkout-group label {
+            font-size: 0.9rem;
+            color: var(--color-light);
+        }
+
+        .checkout-group input, 
+        .checkout-group select {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--color-light);
+            padding: 0.8rem;
+            border-radius: 4px;
+            font-family: var(--font-body);
+        }
+
+        .order-summary {
+            background: rgba(220, 169, 101, 0.05);
+            border: 1px solid var(--color-gold);
+            padding: 2.5rem;
+            border-radius: 8px;
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+
+        .order-summary h3 {
+            font-family: var(--font-heading);
+            margin-bottom: 1.5rem;
+        }
+
+        .summary-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--color-gold);
+        }
+
+        .summary-item img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .summary-details {
+            flex: 1;
+        }
+
+        .summary-details h5 {
+            font-size: 0.9rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .summary-details span {
+            color: #aaa;
+            font-size: 0.8rem;
+        }
+
+        .summary-price {
+            font-weight: 600;
+        }
+
+        .summary-totals {
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            color: #ccc;
+            font-size: 0.95rem;
+        }
+
+        .summary-row.total {
+            color: var(--color-gold);
+            font-size: 1.3rem;
+            font-weight: bold;
+            border-top: 1px solid rgba(220, 169, 101, 0.3);
+            padding-top: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .payment-methods {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .payment-method {
+            flex: 1;
+            padding: 1rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 4px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .payment-method.active, .payment-method:hover {
+            border-color: var(--color-gold);
+            background: rgba(220, 169, 101, 0.1);
+        }
+
+        .payment-method i {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+            color: var(--color-gold);
+        }
+
+        #empty-checkout-msg {
+            text-align: center;
+            padding: 4rem 1rem;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar Minimal -->
+    <nav class="navbar" id="navbar" style="padding: 1rem 5%; justify-content: space-between; background: var(--bg-body); display: flex;">
+        <a href="home.html" class="nav-logo">
+            <img src="Logo_leon_coffee_0.png" alt="Leon Coffee Logo" style="height: 60px;">
+        </a>
+        <div style="display: flex; gap: 1rem; align-items: center;">
+            <a href="#" class="nav-icon" id="theme-toggle"><i class="fas fa-moon"></i></a>
+            <a href="home.html#shop" class="btn btn-outline" style="padding: 0.5rem 1rem; text-decoration: none;">Volver a la tienda</a>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div id="empty-checkout-msg">
+        <h2>Tu carrito está vacío</h2>
+        <p style="margin: 1rem 0 2rem;">Parece que aún no has añadido productos a tu pedido.</p>
+        <a href="home.html#shop" class="btn btn-primary">Volver a la tienda</a>
+    </div>
+
+    <div class="checkout-container" id="checkout-content">
+        <!-- Forms -->
+        <div class="checkout-forms">
+            <div class="checkout-header">
+                <h2>Finalizar Compra</h2>
+                <p>Por favor, completa tus datos para procesar el envío.</p>
+            </div>
+            
+            <form id="checkout-form">
+                <!-- Shipping Info -->
+                <div class="form-section">
+                    <h3>1. Dirección de Envío</h3>
+                    <div class="checkout-grid">
+                        <div class="checkout-group">
+                            <label>Nombre</label>
+                            <input type="text" required placeholder="Tu nombre">
+                        </div>
+                        <div class="checkout-group">
+                            <label>Apellidos</label>
+                            <input type="text" required placeholder="Tus apellidos">
+                        </div>
+                        <div class="checkout-group full-width">
+                            <label>Dirección</label>
+                            <input type="text" required placeholder="Calle, número, piso...">
+                        </div>
+                        <div class="checkout-group">
+                            <label>Ciudad</label>
+                            <input type="text" required placeholder="Ciudad">
+                        </div>
+                        <div class="checkout-group">
+                            <label>Código Postal</label>
+                            <input type="text" required placeholder="C.P.">
+                        </div>
+                        <div class="checkout-group full-width">
+                            <label>Teléfono</label>
+                            <input type="tel" required placeholder="Tu número de contacto">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Info -->
+                <div class="form-section">
+                    <h3>2. Método de Pago</h3>
+                    <div class="payment-methods">
+                        <div class="payment-method active" data-method="card">
+                            <i class="fas fa-credit-card"></i>
+                            <span>Tarjeta</span>
+                        </div>
+                        <div class="payment-method" data-method="paypal">
+                            <i class="fab fa-paypal"></i>
+                            <span>PayPal</span>
+                        </div>
+                    </div>
+                    
+                    <div class="checkout-grid" id="card-details">
+                        <div class="checkout-group full-width">
+                            <label>Nombre en la Tarjeta</label>
+                            <input type="text" placeholder="Tu nombre como aparece en la tarjeta" required>
+                        </div>
+                        <div class="checkout-group full-width">
+                            <label>Número de Tarjeta</label>
+                            <input type="text" placeholder="0000 0000 0000 0000" required>
+                        </div>
+                        <div class="checkout-group">
+                            <label>Caducidad</label>
+                            <input type="text" placeholder="MM/AA" required>
+                        </div>
+                        <div class="checkout-group">
+                            <label>CVC</label>
+                            <input type="text" placeholder="123" required>
+                        </div>
+                    </div>
+                    
+                    <!-- PayPal Details -->
+                    <div id="paypal-details" style="display: none; text-align: center; padding: 2rem; background: var(--color-dark); border-radius: 4px; border: 1px dashed var(--color-gold); margin-top: 1.5rem;">
+                        <i class="fab fa-paypal" style="font-size: 3rem; color: #0070ba; margin-bottom: 1rem; background: var(--color-dark); padding: 10px 15px; border-radius: 8px;"></i>
+                        <p style="color: var(--color-light); margin-bottom: 0;">Serás redirigido al entorno seguro de PayPal para completar tu compra.</p>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary" id="submit-btn" style="width: 100%; font-size: 1.2rem; padding: 1.2rem;">Confirmar y Pagar</button>
+            </form>
+        </div>
+
+        <!-- Order Summary -->
+        <div class="order-summary">
+            <h3>Resumen del Pedido</h3>
+            <div id="checkout-items">
+                <!-- Injected via JS -->
+            </div>
+            
+            <div class="summary-totals">
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span id="checkout-subtotal">€0.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>Envío</span>
+                    <span>Gratis</span>
+                </div>
+                <div class="summary-row total">
+                    <span>Total a pagar</span>
+                    <span id="checkout-total">€0.00</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal" id="success-modal">
+        <div class="modal-content" style="text-align: center; padding: 3rem;">
+            <i class="fas fa-check-circle" style="font-size: 4rem; color: #4CAF50; margin-bottom: 1.5rem;"></i>
+            <h2>¡Pedido Confirmado!</h2>
+            <p style="margin: 1rem 0 2rem;">Gracias por tu compra. Te hemos enviado un email con los detalles del pedido.</p>
+            <button class="btn btn-primary" onclick="window.location.href='home.html'">Volver a la tienda</button>
+        </div>
+    </div>
+
+    <!-- Script for Checkout Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cartData = JSON.parse(localStorage.getItem('cart')) || [];
+            const checkoutContent = document.getElementById('checkout-content');
+            const emptyMsg = document.getElementById('empty-checkout-msg');
+            const itemsContainer = document.getElementById('checkout-items');
+            
+            if (cartData.length === 0) {
+                checkoutContent.style.display = 'none';
+                emptyMsg.style.display = 'block';
+                return;
+            }
+
+            let subtotal = 0;
+            let html = '';
+
+            cartData.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                subtotal += itemTotal;
+                
+                html += `
+                    <div class="summary-item">
+                        <img src="${item.image}" alt="${item.name}">
+                        <div class="summary-details">
+                            <h5>${item.name}</h5>
+                            <span>Cant: ${item.quantity}</span>
+                        </div>
+                        <div class="summary-price">€${itemTotal.toFixed(2)}</div>
+                    </div>
+                `;
+            });
+
+            itemsContainer.innerHTML = html;
+            document.getElementById('checkout-subtotal').textContent = `€${subtotal.toFixed(2)}`;
+            document.getElementById('checkout-total').textContent = `€${subtotal.toFixed(2)}`;
+
+            // Payment Method Selection Logic
+            const paymentMethods = document.querySelectorAll('.payment-method');
+            const cardDetails = document.getElementById('card-details');
+            const paypalDetails = document.getElementById('paypal-details');
+            const submitBtn = document.getElementById('submit-btn');
+            let selectedMethod = 'card';
+
+            paymentMethods.forEach(method => {
+                method.addEventListener('click', () => {
+                    paymentMethods.forEach(m => m.classList.remove('active'));
+                    method.classList.add('active');
+                    selectedMethod = method.dataset.method;
+
+                    if (selectedMethod === 'paypal') {
+                        cardDetails.style.display = 'none';
+                        paypalDetails.style.display = 'block';
+                        cardDetails.querySelectorAll('input').forEach(input => input.removeAttribute('required'));
+                        submitBtn.textContent = 'Pagar con PayPal';
+                    } else {
+                        cardDetails.style.display = 'grid';
+                        paypalDetails.style.display = 'none';
+                        cardDetails.querySelectorAll('input').forEach(input => input.setAttribute('required', 'required'));
+                        submitBtn.textContent = 'Confirmar y Pagar';
+                    }
+                });
+            });
+
+            // Form Submit Logic
+            document.getElementById('checkout-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                // Simulate processing
+                const btn = e.target.querySelector('button[type="submit"]');
+                const orig = btn.textContent;
+                btn.textContent = selectedMethod === 'paypal' ? 'Redirigiendo a PayPal...' : 'Procesando...';
+                btn.disabled = true;
+
+                setTimeout(() => {
+                    // Empty cart
+                    localStorage.removeItem('cart');
+                    // Show success
+                    document.getElementById('success-modal').classList.add('active');
+                }, 1500);
+            });
+        });
+    </script>
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/51999999999" target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preguntas Frecuentes | Leon Coffee</title>
+    <link rel="icon" type="image/png" href="Logo_leon_coffee_0.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .faq-hero {
+            padding: 160px 5% 4rem;
+            text-align: center;
+            background: linear-gradient(to bottom, var(--color-dark), var(--bg-body)), url('historia_bg.jpg') center/cover;
+            position: relative;
+        }
+
+        .faq-hero h1 {
+            font-size: 3rem;
+            color: var(--color-gold);
+            margin-bottom: 1rem;
+        }
+        
+        .faq-hero p {
+            font-size: 1.1rem;
+            color: var(--color-light);
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto 5rem;
+            padding: 0 5%;
+        }
+
+        .accordion-item {
+            background: var(--color-dark);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .accordion-header {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--color-light);
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: background 0.3s;
+        }
+
+        .accordion-header:hover {
+            background: var(--color-dark);
+        }
+
+        .accordion-header i {
+            color: var(--color-gold);
+            transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .accordion-item.active .accordion-header i {
+            transform: rotate(180deg);
+        }
+
+        .accordion-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .accordion-content {
+            padding: 0 1.5rem 1.5rem;
+            color: var(--color-light);
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar Minimal -->
+    <nav class="navbar" id="navbar" style="padding: 1rem 5%; justify-content: space-between; background: var(--bg-body); display: flex;">
+        <a href="home.html" class="nav-logo">
+            <img src="Logo_leon_coffee_0.png" alt="Leon Coffee Logo" style="height: 60px;">
+        </a>
+        <div style="display: flex; gap: 1rem; align-items: center;">
+            <a href="#" class="nav-icon" id="theme-toggle"><i class="fas fa-moon"></i></a>
+            <a href="home.html" class="btn btn-outline" style="padding: 0.5rem 1rem; text-decoration: none;">Volver a la tienda</a>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="faq-hero">
+        <h1>Preguntas Frecuentes</h1>
+        <p style="margin-bottom: 2rem;">¿Tienes alguna duda sobre nuestros productos, envíos o preparación? Aquí encontrarás las respuestas.</p>
+    </section>
+
+    <!-- Accordion Section -->
+    <div class="faq-container">
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                ¿Cuánto tarda en llegar mi pedido?
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-body">
+                <div class="accordion-content">
+                    <p style="line-height: 1.6;">Todos nuestros pedidos nacionales se envían mediante mensajería express y suelen tardar entre 24 y 48 horas laborables desde que el café recién tostado sale de nuestras instalaciones.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header">
+                ¿El café viene molido o en grano?
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-body">
+                <div class="accordion-content">
+                    Disponemos de ambas opciones. En la tienda puedes seleccionar directamente nuestro icónico "Café en Grano Orgánico" si prefieres molerlo tú mismo en casa, o el "Café Molido Orgánico" con un grosor ideal para cafeteras italianas (Moka) y de goteo.
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header">
+                ¿El café es 100% orgánico?
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-body">
+                <div class="accordion-content">
+                    Sí. Trabajamos exclusivamente con pequeñas fincas certificadas que no utilizan pesticidas ni químicos. Esto no solo ayuda al planeta, sino que garantiza que los aceites esenciales del grano tengan una pureza asombrosa.
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header">
+                ¿Realizan envíos internacionales?
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-body">
+                <div class="accordion-content">
+                    Actualmente realizamos envíos a toda la Península, Baleares y la mayoría de países europeos. Si resides fuera de Europa, por favor contáctanos previamente para calcular las tarifas de envío especiales.
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header">
+                ¿Cuáles son los métodos de pago aceptados?
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-body">
+                <div class="accordion-content">
+                    Aceptamos varios métodos de pago seguros, incluyendo tarjetas de crédito/débito (Visa, Mastercard, American Express) y PayPal. Todas las transacciones están encriptadas para tu seguridad.
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header">
+                ¿Cómo puedo hacer el seguimiento de mi pedido?
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-body">
+                <div class="accordion-content">
+                    Una vez que tu pedido sea enviado, recibirás un correo electrónico de confirmación con un número de seguimiento y un enlace para que puedas conocer el estado de tu entrega en todo momento.
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header">
+                ¿Cuál es la política de devoluciones?
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-body">
+                <div class="accordion-content">
+                    Si no estás satisfecho con tu compra o si el producto llegó dañado, tienes un plazo de 14 días naturales desde la recepción del pedido para solicitar una devolución. El producto debe estar sin abrir y en su embalaje original.
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header">
+                ¿Venden al por mayor para cafeterías y oficinas?
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-body">
+                <div class="accordion-content">
+                    ¡Sí! Estaremos encantados de ser los proveedores de café para tu negocio u oficina. Por favor, utiliza nuestro formulario de contacto en la sección "Quiero distribuir su café" para solicitar información sobre precios y condiciones para mayoristas.
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact" style="margin-top: 0;">
+        <div class="footer-grid">
+            <div class="footer-col" style="text-align: center; grid-column: 1 / -1;">
+                <img src="Logo_leon_coffee_0.png" alt="Leon Coffee Logo" style="height: 70px; margin-bottom: 1.5rem; filter: brightness(0) invert(1);">
+                <p style="font-size: 0.9rem;">Tradición y Pasión por el café, desde 2026</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Leon Coffee. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/51999999999" target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+</body>
+</html>
